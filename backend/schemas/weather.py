@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, model_validator
+from typing import Optional, List
 
 
 class Location(BaseModel):
@@ -14,7 +15,14 @@ class Weather(BaseModel):
     weather: str
     description: str
     weather_icon: str
-    dt: int
+    dt: Optional[int] = None
+    dt_txt: Optional[str] = None
+
+    @model_validator(mode="after")
+    def check_dt_or_dt_txt(self):
+        if self.dt is None and self.dt_txt is None:
+            raise ValueError("Either 'dt' or 'dt_txt' must be provided")
+        return self
 
 
 class CurrentWeather(BaseModel):
@@ -31,3 +39,23 @@ class CurrentWeatherResponse(BaseModel):
 class ErrorResponse(BaseModel):
     status: int
     message: str
+
+
+# lat & lon
+class LatLon(BaseModel):
+    city: str
+    country: str
+    lat: float
+    lon: float
+
+
+# Forecast
+class ForecastWeather(BaseModel):
+    location: Location
+    weather: List[Weather]
+
+
+class ForecastWeatherResponse(BaseModel):
+    status: int
+    message: str
+    data: ForecastWeather
