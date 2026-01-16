@@ -1,0 +1,332 @@
+.main {
+  width: 100%;
+  height: 100%;
+  background: var(--c-g1);
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.cnt {
+  width: 80%;
+  height: 80%;
+  background: var(--c-g3);
+  border-radius: 10px;
+  margin: auto;
+  display: flex;
+  /* overflow: hidden; */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.left {
+  flex-basis: 75%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.search {
+  width: 70%;
+  height: 40px;
+  border: 1px solid var(--c-g3);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  background: var(--c-g0);
+  overflow: hidden;
+}
+
+.input {
+  flex-basis: 90%;
+  width: 100%;
+  height: 100%;
+}
+.input input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 10px;
+}
+.icon {
+  flex-basis: 10%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--c-g2);
+  cursor: pointer;
+}
+
+/* weather card  */
+.weather_card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.city {
+  color: var(--c-g5);
+}
+
+.country {
+  width: 25px;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  margin: 0 10px 0 5px;
+}
+
+.data {
+  display: flex;
+  align-items: center;
+}
+.temp {
+  font-size: 150px;
+  color: var(--c-g5);
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  color: var(--c-g5);
+}
+
+.metric_icon {
+  margin-right: 15px;
+}
+
+.condition {
+  display: flex;
+  align-items: center;
+  color: var(--c-g5);
+}
+
+.condition > img {
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  margin-right: 10px;
+}
+
+.days_card_cnt {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  justify-content: center;
+}
+
+.days_card {
+  flex: 1 1 0;
+  min-width: 80px;
+  max-width: 150px;
+}
+
+.right {
+  flex-basis: 25%;
+  width: 100%;
+  height: 100%;
+  background: var(--c-g2);
+  padding: 20px;
+  color: var(--c-g5);
+}
+
+.updated_date {
+  font-weight: 500;
+  text-align: center;
+}
+.label {
+  text-transform: capitalize;
+}
+
+.forecast_cnt {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.title > .label {
+  text-transform: uppercase;
+}
+
+.forecast {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 15px 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 10px 0;
+}
+
+.forecast::-webkit-scrollbar {
+  display: none;
+}
+
+.shimmer_box {
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--c-g2), var(--c-g3), var(--c-g2));
+  background-size: 200% 100%;
+  animation: shimmer 1.2s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.error {
+    position: absolute;
+    top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  
+    padding: 12px 16px;
+    margin-bottom: 16px;
+  
+    background: var(--c-r2);
+    border: 1px solid var(--c-r3);
+    border-radius: 12px;
+  
+    color: var(--c-r4);
+    font-size: 14px;
+    font-weight: 500;
+  
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  
+  .show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .hide {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  
+  .error span {
+    font-size: 18px;
+  }
+  
+  .error p {
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+
+/* responsive */
+.main {
+  flex-direction: column;
+}
+
+.cnt {
+  flex-direction: row;
+}
+
+@media (max-width: 1024px) {
+  .cnt {
+    flex-direction: column;
+    width: 95%;
+    height: auto;
+  }
+
+  .left {
+    flex-basis: 100%;
+    padding: 15px;
+  }
+
+  .right {
+    flex-basis: 100%;
+    padding: 15px;
+  }
+
+  .search {
+    width: 90%;
+  }
+
+  .temp {
+    font-size: 100px;
+  }
+
+  .days_card_cnt {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .temp {
+    font-size: 70px;
+  }
+
+  .search {
+    width: 100%;
+    height: 35px;
+  }
+
+  .input input {
+    padding: 0 5px;
+  }
+
+  .metric {
+    font-size: 14px;
+  }
+
+  .condition {
+    font-size: 14px;
+  }
+
+  .forecast {
+    gap: 10px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .temp {
+    font-size: 50px;
+  }
+
+  .search {
+    height: 30px;
+  }
+
+  .metric,
+  .condition {
+    font-size: 12px;
+  }
+
+  .days_card_cnt {
+    flex-direction: row;
+    gap: 5px;
+  }
+
+  .forecast {
+    gap: 5px 0;
+  }
+}
