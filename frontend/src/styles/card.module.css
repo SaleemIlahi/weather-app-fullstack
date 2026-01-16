@@ -1,0 +1,71 @@
+.cnt {
+    width: 100px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 8px;
+    color: var(--c-g5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cnt:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cnt.active {
+    border: 1px solid var(--c-g4);
+    background: var(--c-g3);
+}
+
+.cnt.custom{
+    background: var(--c-g2);
+}
+
+.date {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.condition > img {
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+    margin: 0 auto 5px auto;
+    display: block;
+    width: 40px; /* ensure icon scales well */
+    height: 40px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .cnt {
+        width: 80px;
+        padding: 6px;
+    }
+
+    .date {
+        font-size: 13px;
+    }
+
+    .condition > img {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cnt {
+        width: 70px;
+        padding: 4px;
+    }
+
+    .date {
+        font-size: 12px;
+    }
+
+    .condition > img {
+        width: 30px;
+        height: 30px;
+    }
+}
