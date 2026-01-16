@@ -70,12 +70,19 @@ def current_weather(city: str = None, lat: float = None, lon: float = None):
             message="Weather service timeout",
         )
     except RequestException as e:
+        if getattr(e, "response", None) is not None:
+            try:
+                msg = e.response.json().get("message", e.response.text)
+            except ValueError:
+                msg = e.response.text
+        else:
+            msg = str(e)
+
         return ErrorResponse(
             status=503,
-            message="Weather service unavailable",
+            message=msg or "Weather service unavailable",
         )
     except Exception as e:
-        print(e)
         return ErrorResponse(
             status=500,
             message="Internal server error",
@@ -180,9 +187,17 @@ def forecast_weather(
             message="Weather service timeout",
         )
     except RequestException as e:
+        if getattr(e, "response", None) is not None:
+            try:
+                msg = e.response.json().get("message", e.response.text)
+            except ValueError:
+                msg = e.response.text
+        else:
+            msg = str(e)
+
         return ErrorResponse(
             status=503,
-            message="Weather service unavailable",
+            message=msg or "Weather service unavailable",
         )
 
     except Exception as e:
